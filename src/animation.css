@@ -69,4 +69,5 @@
   animation-name: animateColorAndPosition;
   animation-duration: 4s;
   animation-delay: 2s;
+  animation-iteration-count: 3;
 }
