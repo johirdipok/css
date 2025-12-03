@@ -1,0 +1,38 @@
+/* The animation code */
+@keyframes redToYello {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: purple;
+  }
+}
+
+/* The element to apply the animation to */
+.box {
+  background-color: red;
+}
+.animationRedToYellow {
+  animation-name: redToYello;
+  animation-duration: 4s;
+}
+
+@keyframes animateMultipleColor {
+  0% {
+    background-color: oklch(63.7% 0.237 25.331);
+  }
+  25% {
+    background-color: oklch(76.8% 0.233 130.85);
+  }
+  50% {
+    background-color: oklch(71.5% 0.143 215.221);
+  }
+  100% {
+    background-color: oklch(66.7% 0.295 322.15);
+  }
+}
+
+.animateMultiColorUsingPercent {
+  animation-name: animateMultipleColor;
+  animation-duration: 4s;
+}

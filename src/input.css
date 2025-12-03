@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animateCard {
+  @apply relative rounded-3xl bg-slate-50 p-6 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/50;
+}
