@@ -36,3 +36,37 @@
   animation-name: animateMultipleColor;
   animation-duration: 4s;
 }
+
+@keyframes animateColorAndPosition {
+  0% {
+    background-color: oklch(63.7% 0.237 25.331);
+    left: 0px;
+    right: 0px;
+  }
+  25% {
+    background-color: oklch(76.8% 0.233 130.85);
+    left: 200px;
+    top: 0px;
+  }
+  50% {
+    background-color: oklch(71.5% 0.143 215.221);
+    left: 200px;
+    top: 200px;
+  }
+  75% {
+    background-color: oklch(66.7% 0.295 322.15);
+    left: 0px;
+    top: 200px;
+  }
+  100% {
+    background-color: oklch(65.6% 0.241 354.308);
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.animateMultipleColorWithPositon {
+  animation-name: animateColorAndPosition;
+  animation-duration: 4s;
+  animation-delay: 2s;
+}
