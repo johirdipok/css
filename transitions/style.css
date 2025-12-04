@@ -53,6 +53,17 @@ body {
   border-radius: 0.25rem;
   height: var(--input-height);
   background-color: var(--color);
+  transition-property: background-color, opacity, transform;
+  transition-duration: var(--transition-duration);
+}
+.ui-button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.ui-button:active {
+  transform: translateY(10%);
 }
 
 [data-show]:not([data-active]) {
