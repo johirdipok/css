@@ -8,6 +8,7 @@
   --transition-duration: 0.3s;
   --transition-easing: cubic-bezier(0.5, 0, 0.5, 1);
   --animation-duration: 0.8s;
+  --input-duration: calc(var(--animation-duration) / 2);
 }
 body {
   display: flex;
@@ -29,7 +30,7 @@ body {
   grid-template-areas: "input button";
 
   animation-name: slideUp;
-  animation-duration: 1s;
+  animation-duration: var(--animation-duration);
 
   --color: var(--color-gray);
   &:focus-within {
@@ -75,9 +76,18 @@ body {
   animation-name: slideUp;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
-  animation-delay: 1s;
   animation-fill-mode: both;
 }
+
+.ui-input {
+  animation-delay: var(--animation-duration);
+  animation-duration: var(--input-duration);
+}
+
+.ui-button {
+  animation-delay: calc(var(--animation-duration) + var(--input-duration));
+}
+
 [data-show]:not([data-active]) {
   display: none;
 }
