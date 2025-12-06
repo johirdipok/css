@@ -28,9 +28,44 @@
     const appEl = document.querySelector("#app");
 
     appEl.addEventListener("click", () => {
-      app.dataset.state =
-        app.dataset.state === "collapsed" ? "expanded" : "collapsed";
+      flip(() => {
+        app.dataset.state =
+          app.dataset.state === "collapsed" ? "expanded" : "collapsed";
+      }, [figureEl, captionEl]);
     });
-    // ...
+
+    function flip(fn, firstEls, lastEls = firstEls) {
+      const firstRects = firstEls.map((el) => el.getBoundingClientRect());
+
+      fn();
+
+      requestAnimationFrame(() => {
+        const lastRects = lastEls.map((el) => el.getBoundingClientRect());
+
+        lastRects.forEach((lastRect, i) => {
+          const firstRect = firstRects[i];
+          const lastEl = lastEls[i];
+
+          if (!firstRect) {
+            return;
+          }
+
+          const dx = firstRect.x - lastRect.x;
+          const dy = firstRect.y - lastRect.y;
+          const dw = firstRect.width / lastRect.width;
+          const dh = firstRect.height / lastRect.height;
+
+          lastEl.style.setProperty("--dx", dx);
+          lastEl.style.setProperty("--dy", dy);
+          lastEl.style.setProperty("--dw", dw);
+          lastEl.style.setProperty("--dh", dh);
+          lastEl.dataset.flip = "invert";
+
+          requestAnimationFrame(() => {
+            lastEl.dataset.flip = "play";
+          });
+        });
+      });
+    }
   </script>
 </html>

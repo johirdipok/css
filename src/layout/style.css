@@ -18,6 +18,7 @@ figure {
   aspect-ratio: 1;
   border: 1px solid;
 }
+
 #app[data-state="expanded"] {
   padding: 2rem;
   grid-template-columns: 1fr 1fr;
@@ -27,11 +28,10 @@ figure {
   width: 70vw;
 }
 
-#app[data-state="collapsed"] {
-  .ui-content {
-    display: none;
-  }
+#app[data-state="collapsed"] .ui-content {
+  display: none;
 }
+
 .ui-content {
   grid-area: content;
   animation: content 0.3s 0.3s both;
@@ -76,4 +76,19 @@ figure {
   font-size: 2rem;
   font-weight: bold;
   color: white;
+}
+
+[data-flip][data-flip-bg][data-flip="invert"]::before,
+[data-flip]:not([data-flip-bg])[data-flip="invert"]::before {
+  transform: translate(
+    calc(var(--dx) * 1px),
+    calc(var(--dy) * 1px),
+    scale(var(--dw), var(--dh))
+  );
+}
+
+[data-flip][data-flip-bg][data-flip="play"]::before,
+[data-flip]:not([data-flip-bg])[data-flip="play"]::before {
+  transition: transform 0.3s;
+  transform: none;
 }
