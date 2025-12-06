@@ -9,8 +9,13 @@
   </head>
   <body>
     <form class="ui-form" data-state="subscribe">
-      <input class="ui-input" type="email" placeholder="your@email.com" />
-      <button class="ui-button" type="button" onclick="setState('subscribing')">
+      <input
+        class="ui-input"
+        name="email"
+        type="email"
+        placeholder="your@email.com"
+      />
+      <button class="ui-button" type="button" onclick="setState()">
         <span>Subscribe</span>
         <span>Subscribing</span>
         <span>Success!</span>
@@ -19,8 +24,17 @@
     </form>
   </body>
   <script>
-    const form = document.querySelector(".ui-form");
+    const formEl = document.querySelector(".ui-form");
 
-    // ...
+    function setState() {
+      const email = document.getElementsByName("email")[0].value;
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      let state = formEl.dataset.state;
+      if (isValid) {
+        formEl.dataset.state = "success";
+      } else {
+        formEl.dataset.state = "error";
+      }
+    }
   </script>
 </html>

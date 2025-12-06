@@ -32,35 +32,33 @@ body {
   &:focus-within {
     --color: var(--color-blue);
   }
-
-  &[data-state="subscribe"] {
-    // Add an animation here
-  }
-
-  &[data-state="success"] {
-    // Change the color and/or add an animation here
-  }
-
-  &[data-state="error"] {
-    // Change the color and/or add an animation here
-  }
-
-  > .ui-input,
-  > .ui-button {
-    animation-name: slide-up;
-    animation-fill-mode: both;
-    animation-timing-function: var(--transition-easing);
-    animation-delay: calc(var(--animation-duration) / 2);
-  }
-
-  > .ui-input {
-    animation-duration: 0.5s;
-  }
-  > .ui-button {
-    animation-duration: 0.6s;
-  }
 }
 
+.ui-form[data-state="subscribe"] .ui-input {
+  animation: slide-up 1s both;
+  animation-duration: 0.5s;
+}
+
+.ui-form[data-state="subscribe"].ui-button {
+  animation-duration: 0.6s;
+}
+
+.ui-form[data-state="success"] {
+  --color: oklch(79.2% 0.209 151.711);
+}
+
+.ui-form[data-state="error"] {
+  --color: oklch(63.7% 0.237 25.331);
+  animation: shake 1s both;
+}
+
+.ui-input,
+.ui-button {
+  animation-name: slide-up;
+  animation-fill-mode: both;
+  animation-timing-function: var(--transition-easing);
+  animation-delay: calc(var(--animation-duration) / 2);
+}
 .ui-input {
   grid-area: input;
   padding: 0 1rem;
